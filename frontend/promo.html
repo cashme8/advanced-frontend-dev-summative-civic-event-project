@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo · CivicEvents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/core/auth.js"></script>
+    <script src="js/core/api.js"></script>
+    <script src="js/core/notifications.js"></script>
+    <script src="js/core/layout.js"></script>
+    <script src="js/core/components.js"></script>
+</head>
+<body class="flex min-h-screen flex-col bg-gray-50 font-sans text-gray-900" data-page="promo" data-auth="required">
+    <div id="app-header"></div>
+
+    <main id="main" class="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
+        <a href="promos.html" class="text-sm text-leaf-700 hover:underline">← Back to promos</a>
+        <div id="promo-root" class="mt-4" aria-live="polite" aria-busy="true"></div>
+    </main>
+
+    <div id="app-footer"></div>
+    <script src="js/pages/promo.js"></script>
+</body>
+</html>

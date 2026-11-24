@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo editor · CivicEvents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/core/auth.js"></script>
+    <script src="js/core/api.js"></script>
+    <script src="js/core/notifications.js"></script>
+    <script src="js/core/layout.js"></script>
+    <script src="js/core/components.js"></script>
+</head>
+<!-- ADMIN-ONLY PAGE: data-role="admin" makes Auth.guard() show a 403 view to normal users (backend also enforces authorize(['admin'])) -->
+<body class="flex min-h-screen flex-col bg-gray-50 font-sans text-gray-900" data-page="promo-form" data-auth="required" data-role="admin" data-layout="admin">
+    <div id="app-header"></div>
+
+    <main id="main" class="flex-1">
+        <div class="mb-6">
+            <a href="promos.html" class="text-sm text-leaf-700 hover:underline">← Back to promos</a>
+            <h1 id="form-title" class="mt-2 text-2xl font-bold text-gray-900">Create promo</h1>
+            <p class="text-gray-600">Fields marked * are required. Residents are notified when a new promo is added.</p>
+        </div>
+
+        <form id="promo-form" class="card grid gap-5 p-6 lg:grid-cols-5" novalidate>
+            <div class="space-y-5 lg:col-span-3">
+                <div class="field">
+                    <label for="title" class="label">Title *</label>
+                    <input id="title" type="text" maxlength="150" required class="input" placeholder="e.g. Kigali Car-Free Day">
+                </div>
+                <div class="field">
+                    <label for="description" class="label">Short description *</label>
+                    <textarea id="description" rows="3" maxlength="500" required class="input" placeholder="One or two sentences shown on the promo card."></textarea>
+                </div>
+                <div class="field">
+                    <label for="caption_text" class="label">Captions / transcript *</label>
+                    <textarea id="caption_text" rows="6" required class="input" aria-describedby="cap-hint" placeholder="Type what is said in the video. Each sentence becomes one caption line."></textarea>
+                    <p id="cap-hint" class="hint">Plain text is split into timed captions across the video. You can also paste a full WebVTT file (starting with "WEBVTT").</p>
+                </div>
+                <div class="flex items-center justify-between rounded-lg border border-gray-200 p-4">
+                    <div>
+                        <p id="pub-label" class="font-semibold text-gray-900">Published</p>
+                        <p id="pub-hint" class="text-sm text-gray-600">Published promos are visible to all residents.</p>
+                    </div>
+                    <span class="switch"><input id="published" type="checkbox" role="switch" checked aria-labelledby="pub-label" aria-describedby="pub-hint"><span class="track"></span></span>
+                </div>
+            </div>
+
+            <div class="space-y-3 lg:col-span-2">
+                <p class="label">Video file <span id="video-req">*</span></p>
+                <div class="dropzone p-4" data-kind="video">
+                    <div id="video-preview" class="mb-3 flex aspect-video items-center justify-center overflow-hidden rounded-lg bg-gray-100 text-gray-500">
+                        <span class="text-sm">No video selected</span>
+                    </div>
+                    <div class="field text-center">
+                        <label for="video" class="btn-secondary cursor-pointer">Choose video</label>
+                        <input id="video" type="file" accept=".mp4,.mov,.avi,.mkv,video/*" class="sr-only" aria-describedby="video-hint">
+                        <p class="mt-2 text-sm text-gray-600" data-file-info>or drag & drop here</p>
+                        <p id="video-hint" class="hint">MP4, MOV, AVI or MKV · max 8 MB</p>
+                    </div>
+                </div>
+                <div id="upload-progress" class="hidden"></div>
+            </div>
+
+            <div id="form-alert" class="hidden lg:col-span-5"></div>
+            <div class="flex flex-wrap justify-end gap-3 border-t pt-5 lg:col-span-5">
+                <a href="promos.html" class="btn-secondary">Cancel</a>
+                <button type="submit" class="btn-primary" id="submit-btn">Create promo</button>
+            </div>
+        </form>
+    </main>
+
+    <div id="app-footer"></div>
+    <script src="js/pages/promo-form.js"></script>
+</body>
+</html>
