@@ -35,3 +35,6 @@ Thumbs.db
 # Coverage reports
 coverage/
 .nyc_output/
+
+# Uploaded media (runtime)
+uploads/

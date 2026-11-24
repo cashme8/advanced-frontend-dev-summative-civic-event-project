@@ -9,7 +9,9 @@
     "dev": "nodemon server.js",
     "db:setup": "cross-env PGPASSWORD=$DB_PASSWORD psql -U $DB_USER -d $DB_NAME -h $DB_HOST -p $DB_PORT -f ./migrations/001_create_tables.sql",
     "db:seed": "cross-env PGPASSWORD=$DB_PASSWORD psql -U $DB_USER -d $DB_NAME -h $DB_HOST -p $DB_PORT -f ./migrations/002_seed_data.sql",
-    "db:reset": "npm run db:setup && npm run db:seed"
+    "db:reset": "npm run db:setup && npm run db:seed",
+    "db:init": "node scripts/setup-db.js",
+    "db:seed:demo": "node scripts/seed.js"
   },
   "author": "Bernard Odartei Lamptey",
   "license": "ISC",
