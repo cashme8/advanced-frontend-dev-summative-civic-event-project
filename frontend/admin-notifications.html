@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage notifications · CivicEvents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/core/auth.js"></script>
+    <script src="js/core/api.js"></script>
+    <script src="js/core/notifications.js"></script>
+    <script src="js/core/layout.js"></script>
+    <script src="js/core/components.js"></script>
+</head>
+<!-- ADMIN-ONLY PAGE: data-role="admin" makes Auth.guard() show a 403 view to normal users (backend also enforces authorize(['admin'])) -->
+<body class="flex min-h-screen flex-col bg-gray-50 font-sans text-gray-900" data-page="admin-notifications" data-auth="required" data-role="admin" data-layout="admin">
+    <div id="app-header"></div>
+
+    <main id="main" class="flex-1">
+        <h1 class="text-2xl font-bold text-gray-900">Manage notifications</h1>
+        <p class="text-gray-600">Notifications are created automatically when events, announcements and promos are published. Remove outdated or incorrect ones here.</p>
+
+        <div id="type-stats" class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4"></div>
+
+        <form id="delete-form" class="card mt-6 grid gap-4 p-6 sm:grid-cols-[1fr_auto] sm:items-end" novalidate>
+            <div class="field">
+                <label for="del-select" class="label">Delete a notification</label>
+                <select id="del-select" class="input" required aria-describedby="del-hint"><option value="">Loading…</option></select>
+                <p id="del-hint" class="hint">Deleting removes it for every resident. This can't be undone.</p>
+            </div>
+            <button type="submit" id="del-submit" class="btn-danger">Delete notification</button>
+        </form>
+
+        <section class="card mt-6 p-6" aria-labelledby="all-h">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <h2 id="all-h" class="text-lg font-semibold">All notifications</h2>
+                <div class="flex flex-wrap gap-2">
+                    <label for="type-filter" class="sr-only">Filter by type</label>
+                    <select id="type-filter" class="input !w-auto !py-2 text-sm">
+                        <option value="">All types</option>
+                        <option value="event">Event</option>
+                        <option value="announcement">Announcement</option>
+                        <option value="promo">Promo</option>
+                    </select>
+                    <button type="button" id="bulk-delete" class="btn-danger !py-2" disabled>Delete selected</button>
+                </div>
+            </div>
+            <div id="notif-table" class="mt-4 overflow-x-auto" aria-busy="true"></div>
+        </section>
+    </main>
+
+    <div id="app-footer"></div>
+    <script src="js/pages/admin-notifications.js"></script>
+</body>
+</html>
