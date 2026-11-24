@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage users · CivicEvents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/core/auth.js"></script>
+    <script src="js/core/api.js"></script>
+    <script src="js/core/notifications.js"></script>
+    <script src="js/core/layout.js"></script>
+    <script src="js/core/components.js"></script>
+</head>
+<!-- ADMIN-ONLY PAGE: data-role="admin" makes Auth.guard() show a 403 view to normal users (backend also enforces authorize(['admin'])) -->
+<body class="flex min-h-screen flex-col bg-gray-50 font-sans text-gray-900" data-page="users" data-auth="required" data-role="admin" data-layout="admin">
+    <div id="app-header"></div>
+
+    <main id="main" class="flex-1">
+        <h1 class="text-2xl font-bold text-gray-900">Manage users</h1>
+        <p class="text-gray-600">Enable or disable resident accounts. Roles are fixed and can't be changed from the portal.</p>
+
+        <div class="card mt-6 flex flex-col gap-4 p-4 sm:flex-row sm:items-end">
+            <div class="flex-1">
+                <label for="q" class="label">Search users</label>
+                <input id="q" type="search" class="input" placeholder="Name or email…">
+            </div>
+            <div class="sm:w-44">
+                <label for="role-filter" class="label">Role</label>
+                <select id="role-filter" class="input"><option value="">All roles</option><option value="user">Residents</option><option value="admin">Admins</option></select>
+            </div>
+            <div class="sm:w-44">
+                <label for="status-filter" class="label">Status</label>
+                <select id="status-filter" class="input"><option value="">Any status</option><option value="active">Active</option><option value="disabled">Disabled</option></select>
+            </div>
+        </div>
+
+        <section class="card mt-4 overflow-x-auto" aria-label="Users">
+            <div id="users-table" aria-busy="true"></div>
+        </section>
+        <div id="pager" class="mt-6 flex items-center justify-center gap-3"></div>
+    </main>
+
+    <div id="app-footer"></div>
+    <script src="js/pages/users.js"></script>
+</body>
+</html>
