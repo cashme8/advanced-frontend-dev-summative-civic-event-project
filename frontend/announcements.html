@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements · CivicEvents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/core/auth.js"></script>
+    <script src="js/core/api.js"></script>
+    <script src="js/core/notifications.js"></script>
+    <script src="js/core/layout.js"></script>
+    <script src="js/core/components.js"></script>
+</head>
+<body class="flex min-h-screen flex-col bg-gray-50 font-sans text-gray-900" data-page="announcements" data-auth="required">
+    <div id="app-header"></div>
+
+    <main id="main" class="mx-auto w-full max-w-7xl flex-1 px-4 py-8">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900">Announcements</h1>
+                <p class="mt-1 text-gray-600">Official audio updates from the city. Press play to listen.</p>
+            </div>
+            <a href="announcement-form.html" id="new-btn" class="btn-primary hidden self-start sm:self-auto"></a>
+        </div>
+
+        <div class="card mt-6 flex flex-col gap-4 p-4 sm:flex-row sm:items-end">
+            <div class="flex-1">
+                <label for="q" class="label">Search announcements</label>
+                <input id="q" type="search" class="input" placeholder="Search by title…">
+            </div>
+            <!-- ADMIN-ONLY status filter -->
+            <div id="status-wrap" class="hidden sm:w-48">
+                <label for="status" class="label">Status</label>
+                <select id="status" class="input">
+                    <option value="published">Published</option>
+                    <option value="all">All</option>
+                    <option value="draft">Unpublished</option>
+                </select>
+            </div>
+        </div>
+        <p id="result-count" class="mt-4 text-sm text-gray-600" aria-live="polite"></p>
+
+        <section aria-label="Announcements list" class="mt-2">
+            <div id="list" class="grid gap-4 md:grid-cols-2" aria-busy="true"></div>
+            <div id="pager" class="mt-8"></div>
+        </section>
+    </main>
+
+    <div id="app-footer"></div>
+    <script src="js/pages/announcements.js"></script>
+</body>
+</html>
