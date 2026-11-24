@@ -66,7 +66,7 @@ App.init(() => {
             </div>
 
             <div class="mt-4 flex flex-wrap items-center gap-2">
-                ${p.caption_text ? `<button type="button" id="cc-btn" class="btn-secondary !py-2" aria-pressed="true"></button>` : `<span class="text-sm text-gray-600">No captions provided for this video.</span>`}
+                ${p.caption_text ? `<button type="button" id="cc-btn" class="btn-secondary !py-2" aria-pressed="true"><span class="rounded border border-current px-1 text-xs font-bold">CC</span> Captions on</button>` : `<span class="text-sm text-gray-600">No captions provided for this video.</span>`}
                 ${p.published ? '' : badge('Unpublished', 'amber')}
             </div>
 

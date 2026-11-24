@@ -78,7 +78,7 @@ const Components = (() => {
         <article class="card group flex flex-col overflow-hidden fade-in transition hover:-translate-y-0.5 hover:shadow-lg" aria-labelledby="pr-${p.id}">
             <a href="promo.html?id=${p.id}" class="relative block aspect-video bg-gray-900" aria-label="Play promo: ${esc(p.title)}">
                 <!-- thumbnail = first frame of the video. LAZY: src is only set when the card scrolls into view (see lazyVideos) -->
-                <video class="h-full w-full object-cover opacity-90" data-lazy-src="${esc(mediaUrl(p.video_url))}#t=0.5" preload="none" muted playsinline tabindex="-1" aria-hidden="true"></video>
+                <video class="h-full w-full object-cover opacity-90" data-lazy-src="${esc(mediaUrl(p.video_url))}#t=2" preload="none" muted playsinline tabindex="-1" aria-hidden="true"></video>
                 <span class="absolute inset-0 flex items-center justify-center">
                     <span class="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-civic-800 shadow-lg transition group-hover:scale-110">${icon('play', 'w-6 h-6')}</span>
                 </span>
