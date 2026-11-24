@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event · CivicEvents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/core/auth.js"></script>
+    <script src="js/core/api.js"></script>
+    <script src="js/core/notifications.js"></script>
+    <script src="js/core/layout.js"></script>
+    <script src="js/core/components.js"></script>
+</head>
+<body class="flex min-h-screen flex-col bg-gray-50 font-sans text-gray-900" data-page="events" data-auth="required">
+    <div id="app-header"></div>
+
+    <main id="main" class="mx-auto w-full max-w-6xl flex-1 px-4 py-8">
+        <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+            <ol class="flex items-center gap-2 text-gray-600">
+                <li><a href="events.html" class="hover:text-civic-700 hover:underline">Events</a></li>
+                <li aria-hidden="true">/</li>
+                <li aria-current="page" id="crumb" class="truncate font-medium text-gray-900">Loading…</li>
+            </ol>
+        </nav>
+
+        <div id="event-root">
+            <div class="skeleton mb-6 h-72 w-full rounded-2xl"></div>
+            <div class="grid gap-6 lg:grid-cols-3">
+                <div class="space-y-3 lg:col-span-2"><div class="skeleton h-8 w-2/3"></div><div class="skeleton h-4 w-full"></div><div class="skeleton h-4 w-5/6"></div></div>
+                <div class="skeleton h-48"></div>
+            </div>
+        </div>
+    </main>
+
+    <div id="app-footer"></div>
+    <script src="js/pages/event.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events · CivicEvents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/core/auth.js"></script>
+    <script src="js/core/api.js"></script>
+    <script src="js/core/notifications.js"></script>
+    <script src="js/core/layout.js"></script>
+    <script src="js/core/components.js"></script>
+</head>
+<body class="flex min-h-screen flex-col bg-gray-50 font-sans text-gray-900" data-page="events" data-auth="required">
+    <div id="app-header"></div>
+
+    <main id="main" class="mx-auto w-full max-w-7xl flex-1 px-4 py-8">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900">City events</h1>
+                <p class="mt-1 text-gray-600">Find something happening in your community and save your spot.</p>
+            </div>
+            <!-- ADMIN-ONLY control: revealed by events.js only when Auth.isAdmin() -->
+            <a href="event-form.html" id="new-event-btn" class="btn-primary hidden self-start sm:self-auto" data-admin-only></a>
+        </div>
+
+        <!-- Search & filters -->
+        <form id="filters" class="card mt-6 grid gap-4 p-4 sm:grid-cols-2 lg:grid-cols-5" role="search" aria-label="Filter events">
+            <div class="lg:col-span-2">
+                <label for="f-q" class="label">Search</label>
+                <input id="f-q" type="search" class="input" placeholder="Title or description…">
+            </div>
+            <div>
+                <label for="f-location" class="label">Location</label>
+                <select id="f-location" class="input"><option value="">All locations</option></select>
+            </div>
+            <div>
+                <label for="f-date" class="label">When</label>
+                <select id="f-date" class="input">
+                    <option value="upcoming">Upcoming</option>
+                    <option value="today">Today</option>
+                    <option value="week">Next 7 days</option>
+                    <option value="month">Next 30 days</option>
+                    <option value="past">Past events</option>
+                    <option value="all">All dates</option>
+                </select>
+            </div>
+            <div>
+                <label for="f-from" class="label">From date</label>
+                <input id="f-from" type="date" class="input">
+            </div>
+            <!-- ADMIN-ONLY filter: admins can include unpublished events -->
+            <div id="status-filter" class="hidden sm:col-span-2 lg:col-span-5 flex-wrap items-center gap-3" data-admin-only>
+                <span class="text-sm font-semibold text-gray-800" id="status-label">Admin view:</span>
+                <div class="flex gap-2" role="radiogroup" aria-labelledby="status-label">
+                    <label class="flex items-center gap-1.5 text-sm"><input type="radio" name="status" value="published" checked> Published</label>
+                    <label class="flex items-center gap-1.5 text-sm"><input type="radio" name="status" value="all"> All</label>
+                    <label class="flex items-center gap-1.5 text-sm"><input type="radio" name="status" value="draft"> Unpublished</label>
+                </div>
+            </div>
+            <div class="flex items-center justify-between sm:col-span-2 lg:col-span-5">
+                <p id="result-count" class="text-sm text-gray-600" aria-live="polite"></p>
+                <button type="reset" class="btn-ghost text-sm">Clear filters</button>
+            </div>
+        </form>
+
+        <section aria-label="Events list" class="mt-6">
+            <div id="events-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" aria-busy="true"></div>
+            <div id="pager" class="mt-8"></div>
+        </section>
+    </main>
+
+    <div id="app-footer"></div>
+    <script src="js/pages/events.js"></script>
+</body>
+</html>
