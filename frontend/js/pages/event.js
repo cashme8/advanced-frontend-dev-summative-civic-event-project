@@ -83,7 +83,7 @@ App.init(() => {
                         <p class="mt-3 whitespace-pre-line leading-relaxed text-gray-700">${esc(ev.description || 'No description provided.')}</p>
                     </section>
 
-                    <section class="card p-6" aria-labelledby="fb-h">
+                    <section id="feedback" class="card p-6 scroll-mt-24" aria-labelledby="fb-h">
                         <div class="flex flex-wrap items-center justify-between gap-3">
                             <h2 id="fb-h" class="text-lg font-semibold">Ratings & feedback</h2>
                             <div id="fb-summary" class="flex items-center gap-2 text-sm text-gray-700"></div>
@@ -106,11 +106,11 @@ App.init(() => {
                     <section class="card p-6" aria-labelledby="when-h">
                         <h2 id="when-h" class="sr-only">When and where</h2>
                         <dl class="space-y-4 text-sm">
-                            <div class="flex gap-3"><dt class="text-civic-700">${icon('calendar')}<span class="sr-only">Starts</span></dt>
+                            <div class="flex gap-3"><dt class="text-leaf-700">${icon('calendar')}<span class="sr-only">Starts</span></dt>
                                 <dd><p class="font-semibold text-gray-900">${fmtDate(ev.starts_at)}</p><p class="text-gray-600">${fmtTime(ev.starts_at)} – ${ev.ends_at ? `${new Date(ev.ends_at).toDateString() !== new Date(ev.starts_at).toDateString() ? fmtDate(ev.ends_at) + ' ' : ''}${fmtTime(ev.ends_at)}` : 'TBA'}</p></dd></div>
-                            <div class="flex gap-3"><dt class="text-civic-700">${icon('pin')}<span class="sr-only">Location</span></dt>
+                            <div class="flex gap-3"><dt class="text-leaf-700">${icon('pin')}<span class="sr-only">Location</span></dt>
                                 <dd><p class="font-semibold text-gray-900">${esc(ev.location || 'TBA')}</p>
-                                ${ev.location ? `<a href="${mapUrl}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-civic-700 hover:underline">Open in Google Maps ${icon('external', 'w-3.5 h-3.5')}<span class="sr-only">(opens in new tab)</span></a>` : ''}</dd></div>
+                                ${ev.location ? `<a href="${mapUrl}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-leaf-700 hover:underline">Open in Google Maps ${icon('external', 'w-3.5 h-3.5')}<span class="sr-only">(opens in new tab)</span></a>` : ''}</dd></div>
                         </dl>
                         <a href="${icsLink()}" download="${esc(ev.title)}.ics" class="btn-ghost mt-4 w-full border border-civic-200">${icon('calendar', 'w-4 h-4')} Add to calendar</a>
                         <div id="reg-panel" class="mt-4 border-t pt-4"></div>

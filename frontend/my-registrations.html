@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My registrations · CivicEvents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/core/auth.js"></script>
+    <script src="js/core/api.js"></script>
+    <script src="js/core/notifications.js"></script>
+    <script src="js/core/layout.js"></script>
+    <script src="js/core/components.js"></script>
+</head>
+<body class="flex min-h-screen flex-col bg-gray-50 font-sans text-gray-900" data-page="my-registrations" data-auth="required">
+    <div id="app-header"></div>
+
+    <main id="main" class="mx-auto w-full max-w-4xl flex-1 px-4 py-8">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900">My registrations</h1>
+                <p class="mt-1 text-gray-600">Events you've signed up for.</p>
+            </div>
+            <a href="events.html" class="btn-primary self-start">Find more events</a>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="Registration groups">
+            <button type="button" role="tab" class="filter-chip" data-tab="upcoming" aria-selected="true" aria-controls="reg-list">Upcoming <span data-count="upcoming"></span></button>
+            <button type="button" role="tab" class="filter-chip" data-tab="past" aria-selected="false" aria-controls="reg-list">Past <span data-count="past"></span></button>
+            <button type="button" role="tab" class="filter-chip" data-tab="cancelled" aria-selected="false" aria-controls="reg-list">Cancelled <span data-count="cancelled"></span></button>
+        </div>
+
+        <section id="reg-list" role="tabpanel" class="mt-4 space-y-3" aria-busy="true"></section>
+    </main>
+
+    <div id="app-footer"></div>
+    <script src="js/pages/my-registrations.js"></script>
+</body>
+</html>
