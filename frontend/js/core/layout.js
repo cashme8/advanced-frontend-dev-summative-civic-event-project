@@ -42,19 +42,19 @@ const Layout = (() => {
 
         return `
         <a href="#main" class="skip-link btn-primary">Skip to main content</a>
-        <header class="sticky top-0 z-40 bg-gradient-to-r from-civic-800 via-civic-700 to-civic-800 text-white shadow-md">
+        <header class="sticky top-0 z-40 border-b border-gray-200 bg-white/95 text-gray-900 backdrop-blur">
             <div class="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3">
                 <a href="${loggedIn ? 'events.html' : 'index.html'}" class="flex items-center gap-2 shrink-0" aria-label="CivicEvents home">
-                    <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-leaf-300 text-civic-900 font-extrabold">CE</span>
-                    <span class="hidden sm:block text-lg font-bold tracking-tight">Civic<span class="text-leaf-300">Events</span></span>
+                    <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-leaf-700 text-white font-extrabold">CE</span>
+                    <span class="hidden sm:block text-lg font-bold tracking-tight">Civic<span class="text-leaf-700">Events</span></span>
                 </a>
 
                 ${loggedIn ? `
                 <form id="global-search" role="search" action="search.html" class="hidden md:flex flex-1 max-w-md mx-2">
                     <label for="global-q" class="sr-only">Search events, announcements and promos</label>
                     <div class="relative w-full">
-                        <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-civic-200">${icon('search', 'w-4 h-4')}</span>
-                        <input id="global-q" name="q" type="search" value="${esc(q)}" placeholder="Search events, announcements, promos…" class="w-full rounded-lg border border-white/20 bg-white/10 py-2 pl-9 pr-3 text-sm text-white placeholder-civic-200 focus:bg-white focus:text-gray-900 focus:placeholder-gray-500 focus:outline-none">
+                        <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-gray-500">${icon('search', 'w-4 h-4')}</span>
+                        <input id="global-q" name="q" type="search" value="${esc(q)}" placeholder="Search events, announcements, promos…" class="w-full rounded-lg border border-gray-300 bg-gray-50 py-2 pl-9 pr-3 text-sm text-gray-900 placeholder-gray-500 focus:border-leaf-700 focus:bg-white focus:outline-none">
                     </div>
                 </form>
                 <nav aria-label="Main" class="hidden lg:flex items-center gap-1">${navLinks}</nav>` : '<div class="flex-1"></div>'}
@@ -71,14 +71,14 @@ const Layout = (() => {
                         </div>
                     </div>` : ''}
 
-                    <button type="button" id="bell-btn" class="relative rounded-lg p-2 hover:bg-white/10" aria-controls="notif-drawer" aria-expanded="false" aria-label="Notifications">
+                    <button type="button" id="bell-btn" class="relative rounded-lg p-2 text-gray-700 hover:bg-gray-100" aria-controls="notif-drawer" aria-expanded="false" aria-label="Notifications">
                         ${icon('bell', 'w-6 h-6')}
-                        <span id="bell-count" class="absolute -right-0.5 -top-0.5 hidden min-w-[1.25rem] rounded-full bg-leaf-400 px-1 text-center text-xs font-bold leading-5 text-civic-950"></span>
+                        <span id="bell-count" class="absolute -right-0.5 -top-0.5 hidden min-w-[1.25rem] rounded-full bg-leaf-700 px-1 text-center text-xs font-bold leading-5 text-white"></span>
                     </button>
 
                     <div class="relative" data-dropdown>
-                        <button type="button" class="flex items-center gap-2 rounded-lg p-1.5 hover:bg-white/10" aria-haspopup="true" aria-expanded="false" aria-controls="profile-menu" data-toggle>
-                            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-leaf-200 text-sm font-bold text-civic-900" aria-hidden="true">${esc(initials(user?.full_name))}</span>
+                        <button type="button" class="flex items-center gap-2 rounded-lg p-1.5 hover:bg-gray-100" aria-haspopup="true" aria-expanded="false" aria-controls="profile-menu" data-toggle>
+                            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-leaf-100 text-sm font-bold text-leaf-900" aria-hidden="true">${esc(initials(user?.full_name))}</span>
                             <span class="hidden xl:block text-sm font-medium max-w-[9rem] truncate">${esc(user?.full_name)}</span>
                             <span class="sr-only">Open profile menu</span>
                         </button>
@@ -96,7 +96,7 @@ const Layout = (() => {
                         </div>
                     </div>
 
-                    <button type="button" id="mobile-menu-btn" class="lg:hidden rounded-lg p-2 hover:bg-white/10" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">${icon('menu', 'w-6 h-6')}</button>
+                    <button type="button" id="mobile-menu-btn" class="lg:hidden rounded-lg p-2 text-gray-700 hover:bg-gray-100" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">${icon('menu', 'w-6 h-6')}</button>
                 ` : `
                     <a href="login.html" class="nav-link" ${cur('login')}>Log in</a>
                     <a href="signup.html" class="btn-success !py-2">Sign up</a>
@@ -105,14 +105,14 @@ const Layout = (() => {
             </div>
 
             ${loggedIn ? `
-            <div id="mobile-menu" class="hidden lg:hidden border-t border-white/10 px-4 pb-4">
+            <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 px-4 pb-4">
                 <form role="search" action="search.html" class="mt-3 md:hidden">
                     <label for="mobile-q" class="sr-only">Search</label>
-                    <input id="mobile-q" name="q" type="search" value="${esc(q)}" placeholder="Search…" class="w-full rounded-lg bg-white px-3 py-2 text-sm text-gray-900">
+                    <input id="mobile-q" name="q" type="search" value="${esc(q)}" placeholder="Search…" class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900">
                 </form>
                 <nav aria-label="Mobile" class="mt-3 grid gap-1">
                     ${navLinks}
-                    ${admin ? `<p class="mt-2 px-3 text-xs font-semibold uppercase tracking-wide text-leaf-300">Admin</p>${adminLinks.map((l) => `<a href="${l.href}" class="nav-link" ${cur(l.page)}>${icon(l.ic, 'w-4 h-4')}${l.label}</a>`).join('')}` : ''}
+                    ${admin ? `<p class="mt-2 px-3 text-xs font-semibold uppercase tracking-wide text-leaf-800">Admin</p>${adminLinks.map((l) => `<a href="${l.href}" class="nav-link" ${cur(l.page)}>${icon(l.ic, 'w-4 h-4')}${l.label}</a>`).join('')}` : ''}
                 </nav>
             </div>` : ''}
         </header>`;
@@ -133,11 +133,11 @@ const Layout = (() => {
         </aside>`;
 
     const footer = () => `
-        <footer class="mt-16 border-t border-gray-200 bg-civic-950 text-civic-100">
+        <footer class="mt-16 border-t border-gray-200 bg-civic-900 text-gray-300">
             <div class="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
                 <div>
                     <p class="text-lg font-bold text-white">Civic<span class="text-leaf-300">Events</span></p>
-                    <p class="mt-2 text-sm text-civic-200">Your accessible portal for city events, public announcements and community services.</p>
+                    <p class="mt-2 text-sm text-gray-400">Your accessible portal for city events, public announcements and community services.</p>
                 </div>
                 <nav aria-label="Footer – explore">
                     <h2 class="text-sm font-semibold uppercase tracking-wide text-leaf-300">Explore</h2>
@@ -159,10 +159,10 @@ const Layout = (() => {
                 </div>
                 <div>
                     <h2 class="text-sm font-semibold uppercase tracking-wide text-leaf-300">Accessibility</h2>
-                    <p class="mt-3 text-sm text-civic-200">All audio has a text summary and videos include captions. Every feature works with a keyboard. Need help? Contact us and we'll assist.</p>
+                    <p class="mt-3 text-sm text-gray-400">All audio has a text summary and videos include captions. Every feature works with a keyboard. Need help? Contact us and we'll assist.</p>
                 </div>
             </div>
-            <div class="border-t border-white/10 py-4 text-center text-xs text-civic-300">© ${new Date().getFullYear()} CivicEvents · City Services Portal</div>
+            <div class="border-t border-white/10 py-4 text-center text-xs text-gray-400">© ${new Date().getFullYear()} CivicEvents · City Services Portal</div>
         </footer>`;
 
     /** Admin sidebar — only rendered for pages with data-layout="admin" (which are also data-role="admin"). */

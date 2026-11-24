@@ -240,7 +240,7 @@ const UI = (() => {
     };
 
     const badge = (text, color = 'gray') => {
-        const c = { gray: 'bg-gray-100 text-gray-800', green: 'bg-leaf-100 text-leaf-800', blue: 'bg-civic-100 text-civic-800', red: 'bg-red-100 text-red-800', amber: 'bg-amber-100 text-amber-900' }[color];
+        const c = { gray: 'bg-gray-100 text-gray-800', green: 'bg-leaf-100 text-leaf-800', blue: 'bg-teal-50 text-teal-800 ring-1 ring-teal-200', red: 'bg-red-100 text-red-800', amber: 'bg-amber-100 text-amber-900' }[color];
         return `<span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${c}">${esc(text)}</span>`;
     };
 

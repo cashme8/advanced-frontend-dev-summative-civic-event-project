@@ -1,11 +1,11 @@
-/* Tailwind CDN theme: civic blue + light green. Loaded right after the Tailwind CDN script. */
+/* Tailwind CDN theme: neutral charcoal (civic) + green accent (leaf). Loaded right after the Tailwind CDN script. */
 tailwind.config = {
     theme: {
         extend: {
             colors: {
-                civic: {
-                    50: '#eef5ff', 100: '#d9e8ff', 200: '#bcd6ff', 300: '#8ebcff', 400: '#5996ff',
-                    500: '#3370f5', 600: '#1f55e0', 700: '#1a44b8', 800: '#1b3b91', 900: '#1c3573', 950: '#14214a',
+                civic: { // neutral charcoal scale (was blue — toned down for a calmer UI)
+                    50: '#fafafa', 100: '#f4f4f5', 200: '#e4e4e7', 300: '#d4d4d8', 400: '#a1a1aa',
+                    500: '#71717a', 600: '#52525b', 700: '#3f3f46', 800: '#27272a', 900: '#18181b', 950: '#0c0c0e',
                 },
                 leaf: {
                     50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac', 400: '#4ade80',
