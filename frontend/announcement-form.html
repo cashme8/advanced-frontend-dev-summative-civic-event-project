@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcement editor · CivicEvents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/core/auth.js"></script>
+    <script src="js/core/api.js"></script>
+    <script src="js/core/notifications.js"></script>
+    <script src="js/core/layout.js"></script>
+    <script src="js/core/components.js"></script>
+</head>
+<!-- ADMIN-ONLY PAGE: data-role="admin" makes Auth.guard() show a 403 view to normal users (backend also enforces authorize(['admin'])) -->
+<body class="flex min-h-screen flex-col bg-gray-50 font-sans text-gray-900" data-page="announcement-form" data-auth="required" data-role="admin" data-layout="admin">
+    <div id="app-header"></div>
+
+    <main id="main" class="flex-1">
+        <div class="mb-6">
+            <a href="announcements.html" class="text-sm text-leaf-700 hover:underline">← Back to announcements</a>
+            <h1 id="form-title" class="mt-2 text-2xl font-bold text-gray-900">Create announcement</h1>
+            <p class="text-gray-600">Fields marked * are required. A notification is sent to all residents when it's created.</p>
+        </div>
+
+        <form id="announcement-form" class="card max-w-3xl space-y-5 p-6" novalidate>
+            <div class="field">
+                <label for="title" class="label">Title *</label>
+                <input id="title" type="text" maxlength="150" required class="input" placeholder="e.g. Water maintenance on Saturday">
+            </div>
+
+            <div id="audio-section">
+                <p class="label">Audio file <span id="audio-req">*</span></p>
+                <div class="dropzone p-4" data-kind="audio">
+                    <div id="audio-preview" class="mb-3 rounded-lg bg-gray-100 p-4 text-center text-sm text-gray-500">No audio selected</div>
+                    <div class="field text-center">
+                        <label for="audio" class="btn-secondary cursor-pointer">Choose audio</label>
+                        <input id="audio" type="file" accept=".mp3,.wav,.m4a,.ogg,audio/*" class="sr-only" aria-describedby="audio-hint">
+                        <p class="mt-2 text-sm text-gray-600" data-file-info>or drag & drop here</p>
+                        <p id="audio-hint" class="hint">MP3, WAV, M4A or OGG · max 5 MB</p>
+                    </div>
+                </div>
+                <div id="upload-progress" class="mt-3 hidden"></div>
+            </div>
+
+            <div class="flex items-center justify-between rounded-lg border border-gray-200 p-4">
+                <div>
+                    <p id="pub-label" class="font-semibold text-gray-900">Published</p>
+                    <p id="pub-hint" class="text-sm text-gray-600">Published announcements are visible to all residents.</p>
+                </div>
+                <span class="switch"><input id="published" type="checkbox" role="switch" checked aria-labelledby="pub-label" aria-describedby="pub-hint"><span class="track"></span></span>
+            </div>
+
+            <div id="form-alert" class="hidden"></div>
+            <div class="flex flex-wrap justify-end gap-3 border-t pt-5">
+                <a href="announcements.html" class="btn-secondary">Cancel</a>
+                <button type="submit" class="btn-primary" id="submit-btn">Create announcement</button>
+            </div>
+        </form>
+    </main>
+
+    <div id="app-footer"></div>
+    <script src="js/pages/announcement-form.js"></script>
+</body>
+</html>
