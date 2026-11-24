@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard · CivicEvents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/core/auth.js"></script>
+    <script src="js/core/api.js"></script>
+    <script src="js/core/notifications.js"></script>
+    <script src="js/core/layout.js"></script>
+    <script src="js/core/components.js"></script>
+</head>
+<!-- ADMIN-ONLY PAGE: data-role="admin" makes Auth.guard() show a 403 view to normal users (backend also enforces authorize(['admin'])) -->
+<body class="flex min-h-screen flex-col bg-gray-50 font-sans text-gray-900" data-page="dashboard" data-auth="required" data-role="admin" data-layout="admin">
+    <div id="app-header"></div>
+
+    <main id="main" class="flex-1">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-900">Dashboard</h1>
+                <p class="text-gray-600">Live overview of the CivicEvents portal.</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <p id="updated-at" class="text-sm text-gray-500" aria-live="polite"></p>
+                <button type="button" id="refresh" class="btn-secondary"></button>
+            </div>
+        </div>
+
+        <div id="tiles" class="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-3" aria-busy="true"></div>
+
+        <div class="mt-6 grid gap-6 xl:grid-cols-2">
+            <section class="card p-6" aria-labelledby="c1-h">
+                <h2 id="c1-h" class="font-semibold text-gray-900">Content & activity</h2>
+                <p class="text-sm text-gray-600">Total records per section</p>
+                <div id="chart-content" class="mt-4"></div>
+            </section>
+            <section class="card p-6" aria-labelledby="c2-h">
+                <h2 id="c2-h" class="font-semibold text-gray-900">New users per month</h2>
+                <p class="text-sm text-gray-600">Sign-ups over the last 6 months</p>
+                <div id="chart-growth" class="mt-4"></div>
+            </section>
+            <section class="card p-6" aria-labelledby="c3-h">
+                <h2 id="c3-h" class="font-semibold text-gray-900">User accounts</h2>
+                <p class="text-sm text-gray-600">Active vs disabled</p>
+                <div id="chart-users" class="mt-4"></div>
+            </section>
+            <section class="card p-6" aria-labelledby="c4-h">
+                <h2 id="c4-h" class="font-semibold text-gray-900">Events by status</h2>
+                <p class="text-sm text-gray-600">Upcoming, in progress and finished</p>
+                <div id="chart-events" class="mt-4"></div>
+            </section>
+        </div>
+
+        <section class="card mt-6 p-6" aria-labelledby="recent-h">
+            <div class="flex items-center justify-between">
+                <h2 id="recent-h" class="font-semibold text-gray-900">Newest users</h2>
+                <a href="users.html" class="text-sm font-semibold text-leaf-700 hover:underline">Manage users →</a>
+            </div>
+            <div id="recent-users" class="mt-3 overflow-x-auto"></div>
+        </section>
+    </main>
+
+    <div id="app-footer"></div>
+    <script src="js/pages/dashboard.js"></script>
+</body>
+</html>
