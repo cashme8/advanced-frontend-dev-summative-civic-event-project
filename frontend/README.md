@@ -125,5 +125,6 @@ frontend/
 
 * There is no API route for creating notifications. The backend creates them automatically when events, announcements or promos are created or published. Admins can view and delete them.
 * There is no mark-as-read endpoint, so read state is kept per user in `localStorage`.
+* The events API ignores `published` on create and update, so every event stays published. The form warns the admin when this happens.
 * `PUT /announcements/:id` ignores a new audio file, so editing covers title and published status only.
 * Registrations are unique per user and event, so a cancelled registration can't be re-booked.

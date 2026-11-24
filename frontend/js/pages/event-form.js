@@ -85,7 +85,12 @@ App.init(() => {
             const res = editing
                 ? await Services.events.update(id, fd, { onProgress })
                 : await Services.events.create(fd, { onProgress });
-            UI.flash(editing ? 'Event updated successfully.' : 'Event created and residents notified!', 'success');
+            // The provided API ignores `published` for events — warn instead of silently pretending it worked
+            if (!$('#published').is(':checked') && res.data.published !== false) {
+                UI.flash('Event saved, but the API keeps all events published (it ignores the "Published" setting).', 'warning');
+            } else {
+                UI.flash(editing ? 'Event updated successfully.' : 'Event created and residents notified!', 'success');
+            }
             location.href = `event.html?id=${res.data.id}`;
         } catch (err) {
             done();
