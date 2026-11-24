@@ -49,8 +49,7 @@ App.init(() => {
         }
         if (registration?.status === 'cancelled') {
             return `
-            <p class="rounded-lg bg-amber-50 p-3 text-sm text-amber-900">You cancelled your registration for this event.</p>
-            <button type="button" id="register" class="btn-success mt-3 w-full">Register again</button>`;
+            <p class="rounded-lg bg-amber-50 p-3 text-sm text-amber-900">You cancelled your registration for this event. Cancelled places can't be re-booked — contact the organisers if you still want to attend.</p>`;
         }
         return `<button type="button" id="register" class="btn-success w-full !py-3">Register for this event</button>
                 <p class="mt-2 text-center text-xs text-gray-600">Free · You can cancel anytime</p>`;
