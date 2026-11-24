@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in · CivicEvents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/core/auth.js"></script>
+    <script src="js/core/api.js"></script>
+    <script src="js/core/notifications.js"></script>
+    <script src="js/core/layout.js"></script>
+</head>
+<body class="flex min-h-screen flex-col bg-gradient-to-br from-civic-50 via-white to-leaf-50 font-sans text-gray-900" data-page="login" data-auth="guest">
+    <div id="app-header"></div>
+
+    <main id="main" class="flex flex-1 items-center justify-center px-4 py-12">
+        <section class="card w-full max-w-md p-8 fade-in" aria-labelledby="login-title">
+            <h1 id="login-title" class="text-2xl font-bold text-gray-900">Welcome back</h1>
+            <p class="mt-1 text-sm text-gray-600">Log in to see events, announcements and your registrations.</p>
+
+            <div id="form-alert" class="mt-4 hidden"></div>
+
+            <form id="login-form" class="mt-6 space-y-4" novalidate>
+                <div class="field">
+                    <label for="email" class="label">Email address</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required class="input" placeholder="you@example.com">
+                </div>
+                <div class="field">
+                    <label for="password" class="label">Password</label>
+                    <div class="relative">
+                        <input id="password" name="password" type="password" autocomplete="current-password" required class="input pr-11">
+                        <button type="button" class="pw-toggle absolute inset-y-0 right-0 flex items-center px-3 text-gray-600 hover:text-civic-700" aria-label="Show password" aria-pressed="false" data-target="password"></button>
+                    </div>
+                </div>
+                <div class="flex items-start gap-2">
+                    <input id="remember" name="remember" type="checkbox" class="mt-1 h-4 w-4 rounded border-gray-400 text-civic-700 focus:ring-civic-500" aria-describedby="remember-hint">
+                    <div>
+                        <label for="remember" class="text-sm font-medium text-gray-800">Keep me signed in</label>
+                        <p id="remember-hint" class="text-xs text-gray-600">Saves your session on this device (localStorage). Leave unchecked on shared computers — you'll be signed out when the browser closes.</p>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary w-full !py-3">Log in</button>
+            </form>
+
+            <p class="mt-6 text-center text-sm text-gray-600">New here? <a href="signup.html" class="font-semibold text-civic-700 hover:underline">Create an account</a></p>
+        </section>
+    </main>
+
+    <div id="app-footer"></div>
+    <script src="js/pages/auth.js"></script>
+</body>
+</html>
